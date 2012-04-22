@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
+<?import javafx.geometry.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.effect.*?>
@@ -9,72 +10,69 @@
 
 <AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="mediaplayer.MediaPlayerController">
   <children>
-    <GridPane id="gridPane1" prefHeight="571.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+    <GridPane id="gridPane1" prefHeight="539.0" prefWidth="800.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-1.0" AnchorPane.rightAnchor="1.0" AnchorPane.topAnchor="60.0">
       <children>
-        <SplitPane id="splitPaneHorizontal1" dividerPositions="0.21052631578947367" focusTraversable="true" prefHeight="560.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+        <SplitPane id="splitPaneHorizontal1" dividerPositions="0.21052631578947367" focusTraversable="true" prefHeight="588.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
           <items>
             <AnchorPane id="anchorPane1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
               <children>
-                <TreeView id="treeView1" fx:id="treeMedia" prefHeight="555.0" prefWidth="165.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                <TreeView id="treeView1" fx:id="treeMedia" prefHeight="537.0" prefWidth="165.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
               </children>
             </AnchorPane>
             <AnchorPane id="anchorPane2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
               <children>
                 <TabPane id="tabPane1" prefHeight="555.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                   <tabs>
-                    <Tab id="tab1" fx:id="tabMedia" text="Untitled Tab">
+                    <Tab id="tab1" fx:id="tabMedia" text="Media">
                       <content>
-                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                          <children>
+                            <VBox id="vBox1" fx:id="vBoxMedia" prefHeight="500.9999000000025" prefWidth="627.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                              <children>
+                                <ToolBar id="toolBar1" minHeight="29.0" prefHeight="29.0" prefWidth="627.0">
+                                  <items>
+                                    <Button id="button1" fx:id="buttonPlay" onAction="#handleButtonPlayMedia" text="play &gt;" textFill="#001899">
+                                      <effect>
+                                        <DropShadow />
+                                      </effect>
+                                    </Button>
+                                    <Button id="button1" fx:id="buttonStop" onAction="#handleButtonStopMedia" text="stop ||" textFill="#001899">
+                                      <effect>
+                                        <DropShadow />
+                                      </effect>
+                                    </Button>
+                                    <Label id="label2" text="Time:" />
+                                    <Slider id="sliderHorizontal1" fx:id="sliderTime" prefHeight="16.0" prefWidth="412.0">
+                                      <effect>
+                                        <DropShadow />
+                                      </effect>
+                                      <rotationAxis>
+                                        <Point3D />
+                                      </rotationAxis>
+                                    </Slider>
+                                  </items>
+                                  <rotationAxis>
+                                    <Point3D />
+                                  </rotationAxis>
+                                </ToolBar>
+                              </children>
+                            </VBox>
+                          </children>
+                        </AnchorPane>
                       </content>
                     </Tab>
-                    <Tab id="tab2" fx:id="tabDetail" text="Untitled Tab">
-                      <content>
-                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-                      </content>
-                    </Tab>
+                    <Tab id="tab2" fx:id="tabDetail" text="Detail" />
                   </tabs>
                 </TabPane>
               </children>
             </AnchorPane>
           </items>
         </SplitPane>
-        <AnchorPane id="anchorPane3" prefHeight="29.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
-          <children>
-            <Label id="label1" layoutX="13.0" layoutY="34.0" text="FX Media Player">
-              <effect>
-                <Lighting>
-                  <bumpInput>
-                    <Shadow />
-                  </bumpInput>
-                  <light>
-                    <javafx.scene.effect.Light.Distant color="#080066" />
-                  </light>
-                </Lighting>
-              </effect>
-              <font>
-                <Font size="20.0" />
-              </font>
-            </Label>
-          </children>
-          <maxHeight>
-            <Integer fx:value="-1" />
-          </maxHeight>
-          <maxWidth>
-            <Integer fx:value="-1" />
-          </maxWidth>
-          <minHeight>
-            <Integer fx:value="-1" />
-          </minHeight>
-          <minWidth>
-            <Integer fx:value="-1" />
-          </minWidth>
-        </AnchorPane>
       </children>
       <columnConstraints>
         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
       </columnConstraints>
       <rowConstraints>
-        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
         <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="537.0" vgrow="SOMETIMES" />
       </rowConstraints>
     </GridPane>
@@ -97,5 +95,31 @@
         </Menu>
       </menus>
     </MenuBar>
+    <Label id="label1" layoutX="13.0" layoutY="33.0" text="FX Media Player" textFill="#004166">
+      <effect>
+        <Lighting>
+          <bumpInput>
+            <Shadow />
+          </bumpInput>
+          <contentInput>
+            <InnerShadow>
+              <input>
+                <DropShadow color="#5200ff">
+                  <input>
+                    <ColorAdjust />
+                  </input>
+                </DropShadow>
+              </input>
+            </InnerShadow>
+          </contentInput>
+          <light>
+            <javafx.scene.effect.Light.Distant color="#520066" />
+          </light>
+        </Lighting>
+      </effect>
+      <font>
+        <Font size="20.0" />
+      </font>
+    </Label>
   </children>
 </AnchorPane>

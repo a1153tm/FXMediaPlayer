@@ -8,6 +8,7 @@ import mediaplayer.model.*;
 import java.io.File;
 import java.net.URL;
 import java.util.*;
+import javafx.beans.InvalidationListener;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -19,6 +20,8 @@ import javafx.scene.media.MediaPlayer.*;
 import javafx.scene.media.MediaView;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.scene.layout.VBox;
+import javafx.util.Duration;
 
 /**
  *
@@ -38,6 +41,12 @@ public class MediaPlayerController implements Initializable {
     @FXML
     Tab tabDetail;
 
+    @FXML
+    VBox vBoxMedia;
+
+    @FXML
+    Slider sliderTime;
+    
     /**
      * Models
      */
@@ -49,6 +58,8 @@ public class MediaPlayerController implements Initializable {
      * Media Player
      */
     private MediaPlayer mediaPlayer;
+    private MediaView mediaView;
+    private Duration duration;
     private static final String MEDIA_URL = "file:///Users/miyabetaiji/pbl/proto_types/medias/flv_on2vp6vp62_mp3.flv";
 
     @Override
@@ -67,7 +78,11 @@ public class MediaPlayerController implements Initializable {
         // Initialize media view
         mediaPlayer = new MediaPlayer(new Media(MEDIA_URL));
         mediaPlayer.setAutoPlay(true);
-        tabMedia.setContent(new MediaView(mediaPlayer));
+        //tabMedia.setContent(new MediaView(mediaPlayer));
+        mediaView = new MediaView(mediaPlayer);
+        vBoxMedia.getChildren().add(mediaView);
+        
+        //sliderTime.valueProperty().addListener(rb);
     }
 
     private void setTreeItem(TreeItem<String> parentItem, Entry parentEntry) {
@@ -85,7 +100,7 @@ public class MediaPlayerController implements Initializable {
         }
     }
 
-    public void playMedia() {
+    public void handleButtonPlayMedia() {
         Status status = mediaPlayer.getStatus();
         if (status == Status.UNKNOWN
             || status == Status.HALTED)
@@ -97,16 +112,26 @@ public class MediaPlayerController implements Initializable {
          || status == Status.STOPPED
          || status == Status.READY)
         {
+            setMediaView();
             mediaPlayer.play();
         }
     }
  
-    public void stopMedia() {
+    public void handleButtonStopMedia() {
         mediaPlayer.stop();
     }
 
+    
+    private void playMedia() {
+        mediaPlayer.play();
+        duration = mediaPlayer.getMedia().getDuration();
+    }
+    
+    private void setMediaView() {
+        mediaView.setMediaPlayer(mediaPlayer);
+    }
+    
     private final ChangeListener<TreeItem<String>> mediaItemSelected = new ChangeListener<TreeItem<String>>() {
-
         @Override
         public void changed(ObservableValue<? extends TreeItem<String>> observable,
                     TreeItem<String> oldValue, TreeItem<String> newValue) {
@@ -115,8 +140,22 @@ public class MediaPlayerController implements Initializable {
             if (path != null) {
                 mediaPlayer.stop();
                 mediaPlayer = new MediaPlayer(new Media("file://" + path));
-                mediaPlayer.play();
+                setMediaView();
+                playMedia();
             }
         }
     };
+
+    /*
+    private InvalidationListener sliderListenr = new InvalidationListener() {
+        public void invalidated(Observable ov) {
+            if (sliderTime.isValueChanging()) {
+            // multiply duration by percentage calculated by slider position
+                mediaPlayer.seek(duration.multiply(sliderTime.getValue() / 100.0));
+            }
+        }
+    };
+    * 
+    */
+    
 }
