@@ -22,7 +22,7 @@ public class MediaPlayer extends Application {
     
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("Sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("MediaPlayer.fxml"));
         
         stage.setScene(new Scene(root));
         stage.show();

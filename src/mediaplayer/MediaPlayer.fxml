@@ -3,11 +3,99 @@
 <?import java.lang.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane id="AnchorPane" prefHeight="200" prefWidth="320" xmlns:fx="http://javafx.com/fxml" fx:controller="mediaplayer.Sample">
-    <children>
-        <Button id="button" layoutX="126" layoutY="90" text="Click Me!" onAction="#handleButtonAction" fx:id="button" />
-        <Label id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" prefHeight="16" prefWidth="69" fx:id="label" />
-    </children>
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns:fx="http://javafx.com/fxml" fx:controller="mediaplayer.MediaPlayerController">
+  <children>
+    <GridPane id="gridPane1" prefHeight="571.0" prefWidth="800.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <children>
+        <SplitPane id="splitPaneHorizontal1" dividerPositions="0.21052631578947367" focusTraversable="true" prefHeight="560.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
+          <items>
+            <AnchorPane id="anchorPane1" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <children>
+                <TreeView id="treeView1" fx:id="treeMedia" prefHeight="555.0" prefWidth="165.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+              </children>
+            </AnchorPane>
+            <AnchorPane id="anchorPane2" minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+              <children>
+                <TabPane id="tabPane1" prefHeight="555.0" prefWidth="627.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <tabs>
+                    <Tab id="tab1" fx:id="tabMedia" text="Untitled Tab">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      </content>
+                    </Tab>
+                    <Tab id="tab2" fx:id="tabDetail" text="Untitled Tab">
+                      <content>
+                        <AnchorPane id="Content" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                      </content>
+                    </Tab>
+                  </tabs>
+                </TabPane>
+              </children>
+            </AnchorPane>
+          </items>
+        </SplitPane>
+        <AnchorPane id="anchorPane3" prefHeight="29.0" prefWidth="800.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
+          <children>
+            <Label id="label1" layoutX="13.0" layoutY="34.0" text="FX Media Player">
+              <effect>
+                <Lighting>
+                  <bumpInput>
+                    <Shadow />
+                  </bumpInput>
+                  <light>
+                    <javafx.scene.effect.Light.Distant color="#080066" />
+                  </light>
+                </Lighting>
+              </effect>
+              <font>
+                <Font size="20.0" />
+              </font>
+            </Label>
+          </children>
+          <maxHeight>
+            <Integer fx:value="-1" />
+          </maxHeight>
+          <maxWidth>
+            <Integer fx:value="-1" />
+          </maxWidth>
+          <minHeight>
+            <Integer fx:value="-1" />
+          </minHeight>
+          <minWidth>
+            <Integer fx:value="-1" />
+          </minWidth>
+        </AnchorPane>
+      </children>
+      <columnConstraints>
+        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+      </columnConstraints>
+      <rowConstraints>
+        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="63.0" vgrow="SOMETIMES" />
+        <RowConstraints maxHeight="600.0" minHeight="10.0" prefHeight="537.0" vgrow="SOMETIMES" />
+      </rowConstraints>
+    </GridPane>
+    <MenuBar id="menuBar1" layoutY="-1.0" prefHeight="29.0" prefWidth="800.0">
+      <menus>
+        <Menu id="fileMenu1" text="File">
+          <items>
+            <MenuItem id="close1" text="Close" />
+          </items>
+        </Menu>
+        <Menu id="editMenu1" text="Edit">
+          <items>
+            <MenuItem id="delete1" text="Delete" />
+          </items>
+        </Menu>
+        <Menu id="helpMenu1" text="Help">
+          <items>
+            <MenuItem id="about1" text="About" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+  </children>
 </AnchorPane>
